@@ -2,6 +2,7 @@ package com.yoy.weatherclock.utils;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.yoy.weatherclock.bean.Weather;
 
@@ -46,36 +47,36 @@ public class OkHttpUtils {
         mClient.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(final Call call, final IOException e) {
-//                mHandler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        callback.onError(call,e);
-//                    }
-//                });
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.onError(call,e);
+                    }
+                });
             }
 
             @Override
             public void onResponse(final Call call, final Response response) {
                 XmlPullPaserUtils paserUtils = new XmlPullPaserUtils();
-                Weather weather = paserUtils.paser(response.body().byteStream());
-//                mHandler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            callback.onSuccess(call,response);
-//                        } catch (IOException e) {
-//                            callback.onError(call,e);
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                });
+                final Weather weather = paserUtils.paser(response.body().byteStream());
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            callback.onSuccess(call,weather);
+                        } catch (IOException e) {
+                            callback.onError(call,e);
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
     }
 
 
     public interface Callback {
-        void onSuccess(Call call,Response response) throws IOException;
+        void onSuccess(Call call,Weather weather) throws IOException;
         void onError(Call call, IOException e);
     }
 

@@ -7,6 +7,8 @@ import com.yoy.weatherclock.bean.Environment;
 import com.yoy.weatherclock.bean.Forecast;
 import com.yoy.weatherclock.bean.Weather;
 import com.yoy.weatherclock.bean.WeatherDay;
+import com.yoy.weatherclock.bean.Zhishu;
+import com.yoy.weatherclock.bean.Zhishus;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -89,7 +91,7 @@ public class XmlPullPaserUtils {
                 weather.setForecast(readForecast(parser));
                 break;
             case "zhishus":
-
+                weather.setZhishus(readZhiShus(parser));
                 break;
             default:
                 break;
@@ -151,7 +153,7 @@ public class XmlPullPaserUtils {
         }
         parser.require(XmlPullParser.END_TAG,null,"forecast");
         forecast.setForecasts(weatherDays);
-        return null;
+        return forecast;
     }
 
     private WeatherDay readWeatherDay(XmlPullParser parser) throws IOException, XmlPullParserException {
@@ -180,7 +182,7 @@ public class XmlPullPaserUtils {
             }
 
         }
-        parser.require(XmlPullParser.END_TAG,null,"weather");
+        parser.require(XmlPullParser.END_TAG, null, "weather");
         return weatherDay;
 
     }
@@ -201,5 +203,38 @@ public class XmlPullPaserUtils {
             }
         }
         return dayNight;
+    }
+
+    private Zhishu readZhiZhu(XmlPullParser parser) throws IOException, XmlPullParserException {
+        Zhishu zhishu = new Zhishu();
+        while (parser.nextTag() != XmlPullParser.END_TAG){
+            String text = parser.nextText();
+            switch (parser.getName()){
+                case "name":
+                    zhishu.setName(text);
+                    break;
+                case "value":
+                    zhishu.setValue(text);
+                    break;
+                case "detail":
+                    zhishu.setDetail(text);
+                    break;
+                default:
+                    break;
+            }
+        }
+        return zhishu;
+    }
+
+    private Zhishus readZhiShus(XmlPullParser parser) throws IOException, XmlPullParserException {
+        parser.require(XmlPullParser.START_TAG,null,"zhishus");
+        Zhishus zhishus = new Zhishus();
+        List<Zhishu> list = new ArrayList<>();
+        while (parser.nextTag() != XmlPullParser.END_TAG){
+            list.add(readZhiZhu(parser));
+        }
+        parser.require(XmlPullParser.END_TAG,null,"zhishus");
+        zhishus.setZhishus(list);
+        return zhishus;
     }
 }

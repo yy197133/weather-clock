@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.yoy.weatherclock.bean.Weather;
 import com.yoy.weatherclock.utils.OkHttpUtils;
 
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Log.i("123", "thread id" + Thread.currentThread().getId());
+//        Log.i("123", "thread id" + Thread.currentThread().getId());
 
 
         int cityKey = 101020100;
@@ -49,13 +50,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSuccess(Call call, Response response) throws IOException {
+            public void onSuccess(Call call, Weather weather) throws IOException {
                 Log.i("123", "thread id" + Thread.currentThread().getId());
-                Log.i("123", response.body().string());
+                Log.i("123","city:"+weather.getCity()+"\n pm 25:"+weather.getEnvironment().getPm25()+" \n high:"+weather.getForecast().getForecasts().get(1).getHighTemp()+
+                        "\n name:"+weather.getZhishus().getZhishus().get(0).getName());
             }
         });
 
-        //hahahha
+
 
     }
 
