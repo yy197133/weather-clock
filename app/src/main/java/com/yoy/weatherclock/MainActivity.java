@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(Call call, Weather weather) throws IOException {
-                Log.i("123", "thread id" + Thread.currentThread().getId());
-                Log.i("123","city:"+weather.getCity()+"\n pm 25:"+weather.getEnvironment().getPm25()+" \n high:"+weather.getForecast().getForecasts().get(1).getHighTemp()+
-                        "\n name:"+weather.getZhishus().getZhishus().get(0).getName());
             }
         });
 

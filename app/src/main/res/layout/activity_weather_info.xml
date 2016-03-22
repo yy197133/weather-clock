@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="30%h"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/weather_info_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            tools:text="15&#176;"
+            android:textColor="@android:color/white"
+            android:textSize="60sp"
+            android:drawableLeft="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:id="@+id/weather_info_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="上海"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/weather_info_forecast"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="25%h"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:background="@color/colorPrimary"
+        >
 
 
 
-</LinearLayout>
+    </LinearLayout>
+
+
+
+</com.zhy.android.percent.support.PercentLinearLayout>

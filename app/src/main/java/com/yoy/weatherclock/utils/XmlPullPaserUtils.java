@@ -144,16 +144,14 @@ public class XmlPullPaserUtils {
             return environment;
     }
 
-    private Forecast readForecast(XmlPullParser parser) throws IOException, XmlPullParserException {
+    private List<WeatherDay> readForecast(XmlPullParser parser) throws IOException, XmlPullParserException {
         parser.require(XmlPullParser.START_TAG,null,"forecast");
-        Forecast forecast = new Forecast();
         List<WeatherDay> weatherDays = new ArrayList();
         while (parser.nextTag() != XmlPullParser.END_TAG){
             weatherDays.add(readWeatherDay(parser));
         }
-        parser.require(XmlPullParser.END_TAG,null,"forecast");
-        forecast.setForecasts(weatherDays);
-        return forecast;
+        parser.require(XmlPullParser.END_TAG, null, "forecast");
+        return weatherDays;
     }
 
     private WeatherDay readWeatherDay(XmlPullParser parser) throws IOException, XmlPullParserException {
@@ -226,15 +224,13 @@ public class XmlPullPaserUtils {
         return zhishu;
     }
 
-    private Zhishus readZhiShus(XmlPullParser parser) throws IOException, XmlPullParserException {
+    private List<Zhishu> readZhiShus(XmlPullParser parser) throws IOException, XmlPullParserException {
         parser.require(XmlPullParser.START_TAG,null,"zhishus");
-        Zhishus zhishus = new Zhishus();
         List<Zhishu> list = new ArrayList<>();
         while (parser.nextTag() != XmlPullParser.END_TAG){
             list.add(readZhiZhu(parser));
         }
         parser.require(XmlPullParser.END_TAG,null,"zhishus");
-        zhishus.setZhishus(list);
-        return zhishus;
+        return list;
     }
 }
