@@ -24,6 +24,7 @@
             android:textColor="@android:color/white"
             android:textSize="60sp"
             android:drawableLeft="@mipmap/ic_launcher"
+            android:transitionName="temperature"
             />
 
         <TextView
@@ -33,6 +34,7 @@
             tools:text="上海"
             android:textColor="@android:color/white"
             android:textSize="20sp"
+            android:transitionName="city"
             />
     </RelativeLayout>
 
@@ -45,10 +47,93 @@
         android:weightSum="5"
         android:background="@color/colorPrimary"
         >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:paddingRight="5dp">
+
+            <TextView
+                style="@style/weather_info_name_style"
+                android:text="@string/weather_quality"
+                />
+            <TextView
+                style="@style/weather_info_name_style"
+                android:text="@string/major_pollutants"
+                />
+            <TextView
+                style="@style/weather_info_name_style"
+                android:text="@string/pm2.5"
+                />
+            <TextView
+                style="@style/weather_info_name_style"
+                android:text="@string/fengli"
+                />
+            <TextView
+                style="@style/weather_info_name_style"
+                android:text="@string/fengxiang"
+                />
+            <TextView
+                style="@style/weather_info_name_style"
+                android:text="@string/shidu"
+                />
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            >
+            <TextView
+                android:id="@+id/weather_info_quality"
+                style="@style/weather_info_value_style"
+                tools:text="良"
+                />
+            <TextView
+                android:id="@+id/weather_info_major_pollutants"
+                style="@style/weather_info_value_style"
+                tools:text="pm2.5"
+                />
+            <TextView
+                android:id="@+id/weather_info_pm2_5"
+                style="@style/weather_info_value_style"
+                tools:text="80"
+                />
+            <TextView
+                android:id="@+id/weather_info_fengli"
+                style="@style/weather_info_value_style"
+                tools:text="1级"
+                />
+            <TextView
+                android:id="@+id/weather_info_fengxiang"
+                style="@style/weather_info_value_style"
+                tools:text="西北风"
+                />
+            <TextView
+                android:id="@+id/weather_info_shidu"
+                style="@style/weather_info_value_style"
+                tools:text="50%"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
 
 

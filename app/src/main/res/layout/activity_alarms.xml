@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/alarms_weather_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="15%h"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+
+        <TextView
+            android:id="@+id/alarms_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/white"
+            android:text="8&#176;"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:transitionName="temperature"
+            />
+        <TextView
+            android:id="@+id/alarms_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="上海"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:transitionName="city"
+            />
+
+    </RelativeLayout>
+
+</com.zhy.android.percent.support.PercentLinearLayout>

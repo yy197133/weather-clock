@@ -17,4 +17,21 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="weather_info_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="weather_info_name_style" parent="weather_info_text_style">
+        <item name="android:layout_gravity">right</item>
+    </style>
+
+    <style name="weather_info_value_style" parent="weather_info_text_style">
+        <item name="android:layout_gravity">left</item>
+    </style>
+
 </resources>

@@ -4,4 +4,12 @@
 
     <string name="temperature">%s&#176;</string>
     <string name="high_and_low">%s&#176;</string>
+    
+    <string name="weather_quality">空气质量：</string>
+    <string name="major_pollutants">主要污染物：</string>
+    <string name="pm2.5">pm2.5：</string>
+    <string name="fengli">风力：</string>
+    <string name="fengxiang">风向：</string>
+    <string name="shidu">湿度：</string>
+
 </resources>
