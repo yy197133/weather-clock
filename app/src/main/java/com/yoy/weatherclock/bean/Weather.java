@@ -1,5 +1,7 @@
 package com.yoy.weatherclock.bean;
 
+import java.util.List;
+
 /**
  * Created by YoY on 2016/3/11.
  */
@@ -23,9 +25,9 @@ public class Weather {
 
     private Environment environment;
 
-    private Forecast forecast;
+    private List<WeatherDay> forecast;
 
-    private Zhishus zhishus;
+    private List<Zhishu> zhishus;
 
     public String getCity() {
         return city;
@@ -99,19 +101,19 @@ public class Weather {
         this.environment = environment;
     }
 
-    public Forecast getForecast() {
+    public List<WeatherDay> getForecast() {
         return forecast;
     }
 
-    public void setForecast(Forecast forecast) {
+    public void setForecast(List<WeatherDay> forecast) {
         this.forecast = forecast;
     }
 
-    public Zhishus getZhishus() {
+    public List<Zhishu> getZhishus() {
         return zhishus;
     }
 
-    public void setZhishus(Zhishus zhishus) {
+    public void setZhishus(List<Zhishu> zhishus) {
         this.zhishus = zhishus;
     }
 }
