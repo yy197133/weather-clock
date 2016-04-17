@@ -1,10 +1,13 @@
 package com.yoy.weatherclock.bean;
 
+import org.simpleframework.xml.Root;
+
 import java.util.List;
 
 /**
  * Created by YoY on 2016/3/11.
  */
+@Root
 public class Weather {
 
     private String city;

@@ -1,19 +1,18 @@
 package com.yoy.weatherclock.weather;
 
+import com.yoy.weatherclock.base.MVPPresenter;
 import com.yoy.weatherclock.bean.Weather;
 
 /**
  * Created by Administrator on 2016/3/20.
  */
-public class WeatherInfoPresenter implements IWeatherInfoPresenter,IWeatherInfoModel.OnFinishedListener{
+public class WeatherInfoPresenter extends MVPPresenter<IWeatherInfoView> implements IWeatherInfoPresenter,IWeatherInfoModel.OnFinishedListener{
 
 
-    private IWeatherInfoView mView;
     private WeatherInfoModel mModel;
 
 
-    public WeatherInfoPresenter(IWeatherInfoView view){
-        this.mView = view;
+    public WeatherInfoPresenter(){
         mModel = new WeatherInfoModel();
     }
 
@@ -21,17 +20,18 @@ public class WeatherInfoPresenter implements IWeatherInfoPresenter,IWeatherInfoM
 
     @Override
     public void loadWeatherInfo() {
-        if(mView != null){
-            mView.showProgress();
+        if(isViewAttach()){
+            getView().showProgress();
         }
         mModel.loadWeatherInfo(this);
     }
 
     @Override
     public void onFinished(Weather weather) {
-        if(mView != null){
-            mView.hideProgress();
-            mView.showData(weather);
+        if(isViewAttach()){
+            getView().hideProgress();
+            getView().showData(weather);
+
         }
 
     }

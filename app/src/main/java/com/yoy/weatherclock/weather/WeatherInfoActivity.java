@@ -3,14 +3,15 @@ package com.yoy.weatherclock.weather;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yoy.weatherclock.R;
-import com.yoy.weatherclock.base.BaseAcitvity;
+import com.yoy.weatherclock.base.BaseActivity;
+import com.yoy.weatherclock.base.MVPActivity;
 import com.yoy.weatherclock.bean.Weather;
 import com.yoy.weatherclock.bean.WeatherDay;
 
@@ -23,11 +24,11 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2016/3/20.
  */
-public class WeatherInfoActivity extends BaseAcitvity implements IWeatherInfoView {
+public class WeatherInfoActivity extends MVPActivity<IWeatherInfoView,WeatherInfoPresenter> implements IWeatherInfoView {
 
     private Context mContext;
 
-    private WeatherInfoPresenter mPresenter;
+//    private WeatherInfoPresenter mPresenter;
     private ProgressDialog mProgress;
 
     @Bind(R.id.weather_info_temp)
@@ -41,17 +42,28 @@ public class WeatherInfoActivity extends BaseAcitvity implements IWeatherInfoVie
 
 
     @Override
+    protected int getContentLayoutId() {
+        return R.layout.activity_weather_info;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weather_info);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_weather_info);
+//        ButterKnife.bind(this);
         mContext = this;
 
         mProgress = new ProgressDialog(mContext);
         mProgress.setMessage("正在加载中...");
 
-        mPresenter = new WeatherInfoPresenter(this);
+//        mPresenter = new WeatherInfoPresenter();
         mPresenter.loadWeatherInfo();
+    }
+
+    @NonNull
+    @Override
+    protected WeatherInfoPresenter createPresenter() {
+        return new WeatherInfoPresenter();
     }
 
     @Override
