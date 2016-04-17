@@ -6,10 +6,10 @@ import android.support.annotation.NonNull;
 /**
  * Created by Administrator on 2016/4/17.
  */
-public abstract class MVPActivity<V,T extends MVPPresenter> extends BaseActivity {
+public abstract class MVPActivity<V extends IMVPView,P extends MVPPresenter<V>> extends BaseActivity {
 
 
-    protected T mPresenter;
+    protected P mPresenter;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -20,7 +20,7 @@ public abstract class MVPActivity<V,T extends MVPPresenter> extends BaseActivity
     }
 
     @NonNull
-    protected abstract T createPresenter();
+    protected abstract P createPresenter();
 
     @Override
     protected void onDestroy() {

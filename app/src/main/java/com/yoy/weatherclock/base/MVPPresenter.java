@@ -5,12 +5,12 @@ import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
 
-public abstract class MVPPresenter<T> {
+public abstract class MVPPresenter<V extends IMVPView> {
 
-    protected Reference<T> mViewRef;    //view 接口类型的弱引用，防止内存泄露
+    protected Reference<V> mViewRef;    //view 接口类型的弱引用，防止内存泄露
 
-    public void attachView(T view){
-        mViewRef = new WeakReference<T>(view);
+    public void attachView(V view){
+        mViewRef = new WeakReference<V>(view);
     }
 
     public void detachView(){
@@ -21,7 +21,7 @@ public abstract class MVPPresenter<T> {
     }
 
 
-    protected T getView(){
+    protected V getView(){
         return mViewRef == null ? null : mViewRef.get();
     }
 
